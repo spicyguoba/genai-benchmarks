@@ -1,0 +1,6 @@
+{
+  "name": "GenAI Model Benchmarks & Intelligence Index",
+  "description": "Comprehensive, reproducible benchmark database, specifications, tier comparisons, and correlation analysis for frontier, local, and multimodal generative AI models with citations and 1-click live pipeline synchronization.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

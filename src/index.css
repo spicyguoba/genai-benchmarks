@@ -1,0 +1,135 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+  code, kbd, samp, pre {
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+  }
+}
+
+/* Custom scrollbar styling for high-density tables */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.25);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.45);
+}
+
+/* ==========================================================================
+   PAPER-SAVER PRINT STYLESHEET
+   - Zero black toner waste: pure white background (#ffffff) and black text (#000000)
+   - High density layout: 7.5pt/8pt typography, tight margins, and no empty whitespace
+   - Page-break management: avoids breaking mid-table or mid-row
+   - Hides modals, screen navigation, tabs, search bars, and floating controls
+   ========================================================================== */
+@media print {
+  @page {
+    size: letter portrait;
+    margin: 8mm 6mm;
+  }
+
+  html, body {
+    background: #ffffff !important;
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    font-size: 8pt !important;
+    line-height: 1.2 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Hide all screen interface elements */
+  .no-print,
+  nav,
+  header,
+  footer,
+  aside,
+  button,
+  .print-hide,
+  .fixed,
+  [role="dialog"] > div:first-child {
+    display: none !important;
+  }
+
+  /* Make sure modal wrapper doesn't obscure the print sheet */
+  [role="dialog"] {
+    position: static !important;
+    background: transparent !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    max-height: none !important;
+    max-width: 100% !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  /* Target the printable document specifically */
+  #paper-saver-document {
+    display: block !important;
+    visibility: visible !important;
+    position: static !important;
+    width: 100% !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .paper-saver-table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    font-size: 7pt !important;
+    margin-bottom: 6px !important;
+    page-break-inside: auto !important;
+  }
+
+  .paper-saver-table th,
+  .paper-saver-table td {
+    border: 0.5pt solid #aaa !important;
+    padding: 2px 3.5px !important;
+    color: #000000 !important;
+    background: transparent !important;
+    vertical-align: middle !important;
+  }
+
+  .paper-saver-table th {
+    background-color: #f1f3f5 !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    font-size: 6.5pt !important;
+    text-align: left !important;
+  }
+
+  .paper-saver-section {
+    page-break-inside: avoid !important;
+    margin-bottom: 8px !important;
+  }
+
+  .paper-saver-badge {
+    border: 0.5pt solid #666 !important;
+    padding: 0.5px 3px !important;
+    font-size: 6pt !important;
+    border-radius: 2px !important;
+    background: #f8f9fa !important;
+    color: #000 !important;
+  }
+
+  tr {
+    page-break-inside: avoid !important;
+  }
+}
+
